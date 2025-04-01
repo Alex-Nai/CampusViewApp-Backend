@@ -5,6 +5,7 @@ import com.example.campusbackend.entity.Resource;
 import com.example.campusbackend.entity.ResourceType;
 import com.example.campusbackend.repository.ResourceRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ResourceService {
@@ -55,6 +57,22 @@ public class ResourceService {
     @Transactional(readOnly = true)
     public List<ResourceDto> getAvailableResourcesForTimeSlot(LocalDateTime startTime, LocalDateTime endTime) {
         return resourceRepository.findAvailableForTimeSlot(startTime, endTime).stream()
+                .map(this::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<ResourceDto> getOtherResources() {
+        log.info("开始获取非教室资源列表");
+        List<Resource> resources = resourceRepository.findNonClassroomResources();
+        log.info("找到 {} 个非教室资源", resources.size());
+        
+        resources.forEach(resource -> 
+            log.info("资源详情 - ID: {}, 名称: {}, 类型: {}, 位置: {}", 
+                resource.getId(), resource.getName(), resource.getType(), resource.getLocation())
+        );
+        
+        return resources.stream()
                 .map(this::toDto)
                 .collect(Collectors.toList());
     }

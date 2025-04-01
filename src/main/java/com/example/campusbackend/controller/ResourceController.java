@@ -25,6 +25,11 @@ public class ResourceController {
         return ResponseEntity.ok(resourceService.getAllResources());
     }
 
+    @GetMapping("/other")
+    public ResponseEntity<List<ResourceDto>> getOtherResources() {
+        return ResponseEntity.ok(resourceService.getOtherResources());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ResourceDto> getResource(@PathVariable Long id) {
         return ResponseEntity.ok(resourceService.getResourceById(id));

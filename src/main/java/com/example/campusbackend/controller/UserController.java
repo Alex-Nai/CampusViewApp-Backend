@@ -33,7 +33,9 @@ public class UserController {
             registrationDto.getUsername(),
             registrationDto.getPassword(),
             registrationDto.getEmail(),
-            registrationDto.getFullName()
+            registrationDto.getRealName(),
+            registrationDto.getStudentId(),
+            registrationDto.getPhone()
         ));
     }
 
@@ -45,7 +47,8 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUser(
             id,
             updateDto.getEmail(),
-            updateDto.getFullName()
+            updateDto.getRealName(),
+            updateDto.getPhone()
         ));
     }
 } 
