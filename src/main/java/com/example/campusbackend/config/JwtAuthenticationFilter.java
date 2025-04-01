@@ -37,16 +37,16 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     );
 
     private static final List<String> GET_WHITELIST = Arrays.asList(
-            "/api/resources",
-            "/api/resources/available",
-            "/api/resources/available/**",
-            "/api/resources/type/**",
-            "/api/resources/*",
-            "/resources",
-            "/resources/available",
-            "/resources/available/**",
-            "/resources/type/**",
-            "/resources/*"
+            "/api/resource",
+            "/api/resource/available",
+            "/api/resource/available/**",
+            "/api/resource/type/**",
+            "/api/resource/*",
+            "/resource",
+            "/resource/available",
+            "/resource/available/**",
+            "/resource/type/**",
+            "/resource/*"
     );
 
     @Override

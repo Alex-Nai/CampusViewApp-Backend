@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/resources")
+@RequestMapping("/resource")
 @RequiredArgsConstructor
 public class ResourceController {
     private final ResourceService resourceService;

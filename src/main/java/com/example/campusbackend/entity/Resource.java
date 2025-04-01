@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "resources")
+@Table(name = "resource")
 @EntityListeners(AuditingEntityListener.class)
 public class Resource {
     @Id
