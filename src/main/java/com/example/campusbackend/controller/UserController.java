@@ -42,7 +42,7 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUser(userId, updateDto));
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/info/{userId}")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<LoginResponse> getUserInfo(@PathVariable Long userId) {
         return ResponseEntity.ok(userService.getUserInfo(userId));
